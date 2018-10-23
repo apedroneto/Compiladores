@@ -51,8 +51,8 @@ public class LexicalAnalyzer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\2\2\1\3\3\1\1\4\1\5\1\6"+
-    "\1\7\2\0\1\10\1\11\1\12\1\13\1\14";
+    "\1\0\1\1\2\2\1\3\4\1\1\4\1\1\1\5"+
+    "\2\0\1\6\1\7\1\10\1\11\1\12";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[19];
@@ -613,51 +613,43 @@ private PascalToken createToken(String name, String value) {
           case 1: 
             { throw new RuntimeException("Caractere inválido " + yytext() + " na linha " + yyline + ", coluna " +yycolumn);
             }
-          case 13: break;
+          case 11: break;
           case 2: 
             { return createToken("inteiro", yytext());
             }
-          case 14: break;
+          case 12: break;
           case 3: 
             { /**/
             }
-          case 15: break;
+          case 13: break;
           case 4: 
-            { return createToken("MENORQUE", yytext());
-            }
-          case 16: break;
-          case 5: 
             { return createToken("IGUAL", yytext());
             }
-          case 17: break;
-          case 6: 
-            { return createToken("MAIORQUE", yytext());
-            }
-          case 18: break;
-          case 7: 
+          case 14: break;
+          case 5: 
             { return createToken("OR", yytext());
             }
-          case 19: break;
-          case 8: 
+          case 15: break;
+          case 6: 
             { return createToken("MENORIGUAL", yytext());
             }
-          case 20: break;
-          case 9: 
+          case 16: break;
+          case 7: 
             { return createToken("DIFERENTE", yytext());
             }
-          case 21: break;
-          case 10: 
+          case 17: break;
+          case 8: 
             { return createToken("MAIORIGUAL", yytext());
             }
-          case 22: break;
-          case 11: 
+          case 18: break;
+          case 9: 
             { return createToken("AND", yytext());
             }
-          case 23: break;
-          case 12: 
+          case 19: break;
+          case 10: 
             { return createToken("NEGACAO", yytext());
             }
-          case 24: break;
+          case 20: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

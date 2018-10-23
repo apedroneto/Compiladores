@@ -22,12 +22,18 @@ private PascalToken createToken(String name, String value) {
 inteiro = 0|[1-9][0-9]*
 brancos = [\n| |\t]
 
-program = "program"
 
 %%
-
+or {return createToken("OR", yytext()); }
+and {return createToken("AND", yytext()); }
+not {return createToken("NEGACAO", yytext());}
+"<=" {return createToken("MENORIGUAL", yytext()); }
+">=" {return createToken("MAIORIGUAL", yytext()); }
+"<>" {return createToken("DIFERENTE", yytext()); }
+"="  {return createToken("IGUAL", yytext()); }
+">" {return createToken("MAIORQUE", yytext()); }
+"<" {return createToken("MENORQUE", yytext()); }
 {inteiro} { return createToken("inteiro", yytext()); }
-{program} { return createToken(yytext(), "");}
 {brancos} { /**/ }
 
 . { throw new RuntimeException("Caractere inválido " + yytext() + " na linha " + yyline + ", coluna " +yycolumn); }
