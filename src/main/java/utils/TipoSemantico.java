@@ -1,4 +1,4 @@
-package pascal.utils;
+package utils;
 
 public abstract class TipoSemantico {
 	public TipoSemantico() {

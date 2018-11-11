@@ -1,5 +1,0 @@
-package analizador;
-
-public enum Tokens {
-    SOMA, RESTA, MULTIPLICACAO, DIVISAO, POTENCIA, EXPRESSAO_VALIDA, NUMERO, IGUALIGUAL;
-}

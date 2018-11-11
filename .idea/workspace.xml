@@ -3,21 +3,37 @@
   <component name="ChangeListManager">
     <list default="true" id="e9af4540-ceda-4802-9693-92105019ee1e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/analizador/Flex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/analizador/Lexer.flex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/analizador/LexicalAnalyzer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/analizador/Tokens.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generator/Generator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generator/LanguageFase.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/generator/LexicalAnalysisCalculator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generator/LexicalAnalyzer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/generator/Parser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generator/language.flex" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/generator/sym.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/LexicalAnalysisCalculator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pascal/PascaLexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pascal/PascaLexicalAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/Pascal.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pascal/Pascal.cup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/pascal.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pascal/pascal.flex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/program.pas" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pascal/program.pas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/utils/GeradorAssembly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/utils/GeradorAssembly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/utils/Objeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/utils/Objeto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/utils/SemanticManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/utils/SemanticManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pascal/utils/TipoSemantico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/utils/TipoSemantico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/analizador/Flex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/analizador/LexicalAnalyzer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/analizador/Tokens.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/generator/CUP$Parser$actions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/generator/Generator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/generator/LanguageFase.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/generator/LexicalAnalysisCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/generator/LexicalAnalyzer.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/generator/Parser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/generator/sym.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pascal/PascaLexicalAnalyzer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pascal/Pascal.cup" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pascal/Pascal.cup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pascal/program.pas" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pascal/program.pas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pascal/PascaLexicalAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pascal/PascaLexicalAnalyzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pascal/utils/GeradorAssembly.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pascal/utils/Objeto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pascal/utils/SemanticManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pascal/utils/TipoSemantico.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,50 +46,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LexicalAnalysisCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/generator/LexicalAnalysisCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="950" column="26" selection-start-line="950" selection-start-column="26" selection-end-line="950" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pascal.cup" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Pascal.cup" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pascal/Pascal.cup">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
+            <state relative-caret-position="510">
               <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/generator/Parser.java">
+      <file leaf-file-name="GeneratorPascal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pascal/GeneratorPascal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sym.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/generator/sym.java">
+      <file leaf-file-name="LexicalAnalysisCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/generator/LexicalAnalysisCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="83">
+              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pascal.flex" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pascal.flex" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pascal/pascal.flex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="69" column="6" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
+            <state relative-caret-position="60">
+              <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -81,8 +85,8 @@
       <file leaf-file-name="PascaLexicalAnalyzer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pascal/PascaLexicalAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="16" column="76" lean-forward="true" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
+            <state relative-caret-position="191">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,11 +149,11 @@
         <option value="$PROJECT_DIR$/src/main/java/generator/sym.java" />
         <option value="$PROJECT_DIR$/src/main/java/pascal/LexicalAnalysisCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/pascal/Pascal.cup" />
-        <option value="$PROJECT_DIR$/src/main/java/pascal/pascal.flex" />
-        <option value="$PROJECT_DIR$/src/main/java/pascal/PascaLexicalAnalyzer.java" />
         <option value="$PROJECT_DIR$/src/main/java/generator/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/generator/LexicalAnalysisCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/pascal/program.pas" />
+        <option value="$PROJECT_DIR$/src/main/java/pascal/PascaLexicalAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pascal/pascal.flex" />
       </list>
     </option>
   </component>
@@ -374,12 +378,12 @@
       <updated>1540259660615</updated>
       <workItem from="1540259667223" duration="2343000" />
       <workItem from="1540262215166" duration="6626000" />
-      <workItem from="1541961358622" duration="3576000" />
+      <workItem from="1541961358622" duration="3713000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12545000" />
+    <option name="totallyTimeSpent" value="12682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="718" extended-state="6" />
@@ -396,10 +400,10 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.34020618" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3281787" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3281787" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19090909" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19090909" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49924242" weight="0.32646048" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -642,30 +646,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pascal/utils/GeradorAssembly.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/generator/utils/GeradorAssembly.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generator/LexicalAnalysisCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pascal/GeneratorPascal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pascal/PascaLexicalAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="16" column="76" lean-forward="true" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -679,24 +666,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pascal/pascal.flex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="69" column="6" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generator/sym.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/generator/LexicalAnalysisCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="950" column="26" selection-start-line="950" selection-start-column="26" selection-end-line="950" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -709,8 +682,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pascal/Pascal.cup">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
+        <state relative-caret-position="510">
           <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pascal/PascaLexicalAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pascal/GeneratorPascal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/generator/LexicalAnalysisCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pascal/pascal.flex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -731,7 +735,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -1,4 +1,4 @@
-package pascal.utils;
+package utils;
 
 public class Objeto extends TipoSemantico{
 	private String id, tipo;

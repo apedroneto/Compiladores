@@ -25,14 +25,6 @@ public class PascaLexicalAnalyzer {
         }
 
 
-
-//        LexicalAnalyzer lexical = new LexicalAnalyzer(new FileReader(sourceCode));
-//
-//        PascalToken token;
-//
-//        while ((token = lexical.yylex()) != null) {
-//            System.out.println("<" + token.name + ", " + token.value + "> (" + token.line + " - " + token.column + ")");
-//        }
     }
 
 }
