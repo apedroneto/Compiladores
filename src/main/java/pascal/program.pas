@@ -3,8 +3,6 @@ program exString;
 label 10, 53, 71;
 
 const
-  empty = '';
-  string = 'gadf';
   name = 'Victor';
   integer = 100;
   real = 345.76;
@@ -17,8 +15,6 @@ var
   organisation: string;
   message: pchar;
   Num1, Num2, Sum : Integer;
-
-procedure DrawLine;
 
 begin
   10:Clrscr;
@@ -45,58 +41,6 @@ begin
   readln(name);
   writeln('Please Enter the name of your Organisation');
   readln(organisation);
-  repeat
-    YN := Readkey ;
-    if YN = 'y' then Halt;
-    if YN = 'n' then Writeln('Why not? Exiting...');
-    Delay(1800);
-  until (YN = 'y') or (YN = 'n');
   writeln(greetings, name, ' from ', organisation);
-  while Ch <> 'q' do
-  begin
-    Writeln('I told you press ''q'' to exit!!');
-    Ch := Readkey;
-  end;
-  while 10 < 9 do
-    writeln (a);
   writeln(message);
-  if (n1 = '0') and (n2 = '0') then Halt(0);
-  Write('Input number 1:');
-  if (n1 = '1') or (n2 = '2') then Halt;
-  Readln(Num1);
-  Writeln('Input number 2:');
-  if not(n1 = '0') then Halt;
-  Readln(Num2);
-  if a = 'exit' then quit := true else quit := false;
-  if quit = true then Halt;
-  Sum := Num1 + Num2;
-  Writeln(Sum);
-  Readln;
-end;
-
-procedure findMin;
-begin
-  if x < y then
-    m:= x
-  else
-    m:= y;
-  if z < m then
-    m:= z;
-end;
-procedure findMin;
-begin
-  if x < y then
-    m:= x
-  else
-    m:= y;
-  if z < m then
-    m:= z;
-end;
-begin
-  DrawLine(10,5);
-  DrawLine(10,6);
-  DrawLine(10,7);
-  DrawLine(10,10);
-  Readkey;
-
 end.

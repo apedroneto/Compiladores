@@ -86,9 +86,7 @@ whitespace     = {lineTerminator} | [ \t\f]
 "until" { return symbol(sym.UNTIL, new Integer(yyline + 1)); }
 "to" { return symbol(sym.TO, new Integer(yyline + 1)); }
 "downto" { return symbol(sym.DOWNTO, new Integer(yyline + 1)); }
-"if" { return symbol(sym.IF, new Integer(yyline + 1)); }
 "then" { return symbol(sym.THEN, new Integer(yyline + 1)); }
-"else" { return symbol(sym.ELSE, new Integer(yyline + 1)); }
 "case" { return symbol(sym.CASE, new Integer(yyline + 1)); }
 "with" { return symbol(sym.WITH, new Integer(yyline + 1)); }
 "nil" { return symbol(sym.NIL, new Integer(yyline + 1)); }

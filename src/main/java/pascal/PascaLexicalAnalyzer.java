@@ -2,10 +2,8 @@ package pascal;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Paths;
 
-import generator.LexicalAnalysisCalculator;
-import generator.Parser;
+import generator.*;
 
 
 public class PascaLexicalAnalyzer {

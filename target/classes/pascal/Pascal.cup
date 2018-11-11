@@ -43,9 +43,9 @@ terminal PROGRAM, LABEL, CONST, TYPE, VAR, FORWARD, BEGIN, END, PROCEDURE,
 FUNCTION, PACKED, ARRAY, OF, EXTERNAL,  
 
 
-GOTO, WHILE, DO, REPEAT, UNTIL, FOR, TO, DOWNTO, 
+GOTO, WHILE, DO, REPEAT, UNTIL, TO, DOWNTO,
 
-IF, THEN, ELSE, CASE, WITH,
+THEN, CASE, WITH,
 
 NIL, NOT, DIVEXTENSION, OR, AND,
 
@@ -83,9 +83,9 @@ ordinal_type_identifier,
 statement, simple_statement, structured_statement, assigment_statement, procedure_statement,
 goto_statement, variable, expression, expression_list, actual_variable, actual_value, actual_parameter, actual_parameter_list, 
 actual_procedure, actual_function, compound_statement, repetitive_statement, conditional_statement, 
-with_statement, while_statement, repeat_statement, for_statement,
+with_statement, while_statement, repeat_statement,
 
-initial_expression, simple_expression, final_expression, assignment_statement, if_statement, case_statement, case_limb, case_label_list, 
+initial_expression, simple_expression, final_expression, assignment_statement, case_statement, case_limb, case_label_list,
 
 relational_operator, addition_operator, multiplication_operator,   
 
@@ -111,7 +111,7 @@ string, string_character,
 
 sign, sign_optional, term, factor, char, letter, fraction_length, file_buffer, scale_factor, arguments_optional, scale_factor_optional, colon_fraction_length, 
 semi_colon_field_width, identifier_colon, packed_optional, semi_colon_optional, semi_colon_variant_part, compiler_defined_directives,  
-any_character_except_quote, actual_parameter_list_optional, relational_operator_simple_expression, else_statement_optional, simple_statement_optional,  
+any_character_except_quote, actual_parameter_list_optional, relational_operator_simple_expression, simple_statement_optional,
 label_colon, formal_parameter_list_optinonal, label_declaration_part_optional, constant_definition_part_optional, type_definition_part_optional, 
 variable_declaration_part_optional, 
 
@@ -300,7 +300,7 @@ procedure_statement ::= procedure_identifier actual_parameter_list_optional;
 goto_statement ::= GOTO label;
 structured_statement ::= compound_statement | repetitive_statement | conditional_statement | with_statement;
 compound_statement ::= BEGIN statement_sequence END;
-repetitive_statement ::= while_statement | repeat_statement | for_statement;
+repetitive_statement ::= while_statement | repeat_statement ;
 while_statement ::= WHILE:w expression:expw DO statement {: System.out.println("WHILE: " + expw); 
 															if(w != null){ 
 																SemanticManager.getInstance().lineError = ((int) w);
@@ -308,31 +308,10 @@ while_statement ::= WHILE:w expression:expw DO statement {: System.out.println("
 																SemanticManager.getInstance().checkWhileExpression(expw.toString());
 															} :};
 repeat_statement ::= REPEAT statement_sequence UNTIL expression;
-for_statement ::= FOR variable_identifier ASSIGMENT initial_expression to_or_downto final_expression DO statement;
-to_or_downto ::= TO | DOWNTO; 
+to_or_downto ::= TO | DOWNTO;
 
 initial_expression ::= expression;
 final_expression ::= expression;
-
-conditional_statement ::= if_statement:ifstm {: if(ifstm != null) {RESULT = ifstm;} :} | case_statement:casestm {: if(casestm != null) {RESULT = casestm;} :};
-
-
-if_statement ::= IF:ifstm expression:exp THEN statement else_statement_optional {: System.out.println("IF: " + exp); 
-															if(ifstm != null){ 
-																SemanticManager.getInstance().lineError = ((int) ifstm);
-															} if(exp != null) {	
-																SemanticManager.getInstance().checkIfThenElseExpression(exp.toString());
-																RESULT = exp;
-															}  :};
-
-
-else_statement_optional ::= | ELSE:elsestm statement:stm  {: System.out.println("ELSE: " + stm); 
-															if(elsestm != null){ 
-																SemanticManager.getInstance().lineError = ((int) elsestm);
-															} if(stm != null){ 
-																SemanticManager.getInstance().checkIfThenElseExpression(stm.toString());
-																RESULT = stm;
-															} :};
 
 case_statement ::= CASE:casestm expression:exp OF case_limb semi_colon_case_limb semi_colon_optional END {: System.out.println("CASE: " + exp); 
 																						if(casestm != null){ 
