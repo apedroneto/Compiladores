@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import generator.*;
+import utils.SemanticManager;
 
 
 public class PascaLexicalAnalyzer {
@@ -19,6 +20,9 @@ public class PascaLexicalAnalyzer {
             Parser p = new Parser(scanner);
 
             System.out.println(p.parse() + "\n");
+
+            SemanticManager.setInstance();
+
 
         } catch (Exception e) {
             System.out.println(e);

@@ -1,5 +1,7 @@
 package pascal;
 
+import utils.SemanticManager;
+
 import java.io.File;
 
 public class GeneratorPascal {

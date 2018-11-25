@@ -97,6 +97,8 @@ whitespace     = {lineTerminator} | [ \t\f]
 "record" { return symbol(sym.RECORD, new Integer(yyline + 1)); }
 "set" { return symbol(sym.SET, new Integer(yyline + 1)); }
 "file" { return symbol(sym.FILE, new Integer(yyline + 1)); }
+"true" { return symbol(sym.TRUE, new Integer(yyline + 1)); }
+"false" { return symbol(sym.FALSE, new Integer(yyline + 1)); }
 
 
 /*OPERATORS*/
