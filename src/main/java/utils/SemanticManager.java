@@ -62,94 +62,8 @@ public class SemanticManager {
 	public static void setInstance(){
 		instance = null;
 	}
-	/* ---------- AUX methods --------- */
-	public void defaultValue(String variable) {
-		ArrayList<String> value = values.get(variable.toLowerCase());
-		if (value == null) {
-			value = new ArrayList<String>();
-			String tipo = variables.get(variable.toLowerCase());
-			if (integer.contains(tipo) || intSign.contains(tipo)) {
-				value.add("0");
-			}
-			if (reals.contains(tipo)) {
-				value.add("0.0");
-			}
-			if (strings.contains(tipo)) {
-				value.add("");
-			}
-			if (bool.contains(tipo)) {
-				value.add("false");
-			}
-			values.put(variable.toLowerCase(), value);
-		}
 
-	}
 
-	/* ---------- ADD methods --------- */
-	public void addFunction(String identifier, String returnedType) {
-		String identifierSearched = identifier.toLowerCase();
-		String returnedTypeSearched = returnedType.toLowerCase();
-		if (functions.containsKey(identifierSearched)
-				&& identifiers.contains(identifierSearched)) {
-			System.out.println("Identifier " + identifier + " already exists");
-			System.exit(1);
-		} else {
-			if (!types.contains(returnedTypeSearched)) {
-				System.out.println("Pascal does not regonizes the type: "
-						+ returnedType);
-				System.exit(1);
-			} else {
-				functions.put(identifierSearched, returnedTypeSearched);
-				funcParams.put(identifierSearched, null);
-			}
-		}
-	}
-
-	public void addFunctionParams(String identifier,
-			String functionReturnedType, ArrayList<String> params) {
-		String searchedIdentifier = identifier.toLowerCase();
-		String searchedIdentifierType = functionReturnedType.toLowerCase();
-		if (functions.containsKey(searchedIdentifier)
-				|| identifiers.contains(searchedIdentifier)) {
-			if (functions.get(searchedIdentifier)
-					.equals(searchedIdentifierType)) {
-				funcParams.put(searchedIdentifier, params);
-			} else {
-				System.out
-						.println("Function " + identifier
-								+ " was not declared with type "
-								+ functionReturnedType);
-				System.exit(1);
-			}
-		} else {
-			System.out.println("Function " + identifier + " does not exists");
-			System.exit(1);
-		}
-	}
-
-	public void addProcedure(String identifier) {
-		String identifierSearched = identifier.toLowerCase();
-		if (procedures.containsKey(identifierSearched)
-				&& identifiers.contains(identifierSearched)) {
-			System.out.println("Identifier " + identifier + " already exists");
-			System.exit(1);
-		} else {
-			procedures.put(identifierSearched, null);
-		}
-
-	}
-
-	public void addProcedureParams(String identifier, ArrayList<String> params) {
-		String searchedIdentifier = identifier.toLowerCase();
-		if (procedures.containsKey(searchedIdentifier)
-				|| identifiers.contains(searchedIdentifier)) {
-			funcParams.put(searchedIdentifier, params);
-		} else {
-			System.out.println("Function " + identifier + " does not exists");
-			System.exit(1);
-		}
-
-	}
 
 	public void addVariable(String identifier, String type, String value) {
 		if (variables.containsKey(identifier)
@@ -197,27 +111,6 @@ public class SemanticManager {
 		}
 	}
 
-	/* ---------- GET methods --------- */
-	public String getVariableType(String variable) {
-		String variableSearched = variable.toLowerCase();
-		if (variables.containsKey(variableSearched)) {
-			return variables.get(variableSearched).toLowerCase();
-		}
-		return "";
-	}
-
-	public String getVariableValue(String variable) {
-		String variableSearched = variable.toLowerCase();
-		if (values.containsKey(variableSearched)) {
-			if (values.get(variableSearched) == null) {
-				defaultValue(variableSearched);
-			}
-			int index = values.get(variableSearched).size();
-			return values.get(variableSearched).get(index - 1);
-		} else {
-			return "";
-		}
-	}
 
 	/* ---------- CHECK methods --------- */
 
@@ -293,98 +186,12 @@ public class SemanticManager {
 		}
 	}
 
-	public boolean checkFunctionParams(String identifier, String[] funcTypes) {
-		String searchedIdentifier = identifier.toLowerCase();
-		if (functions.containsKey(searchedIdentifier)
-				|| identifiers.contains(searchedIdentifier)) {
-			ArrayList<String> params = funcParams.get(searchedIdentifier);
-			if (params.size() != funcTypes.length - 1) {
-				System.out.println("Incorrect params lenght in function "
-						+ identifier);
-				return false;
-			} else {
-				for (int i = 1; i < funcTypes.length; i++) {
-					String typeOfCalledFunction = funcTypes[i];
-					String typeOfDefinition = params.get(i - 1);
-
-					if (!checkTypesHierarchy(typeOfCalledFunction,
-							typeOfDefinition)) {
-						System.out.println("Expected param of type "
-								+ params.get(i) + " found param type "
-								+ funcTypes[i]);
-						return false;
-					}
-				}
-				return true;
-			}
-
-		}
-		return false;
-
-	}
-
-	public boolean checkProcedureParams(String identifier,
-			String[] procedureTypes) {
-		String searchedIdentifier = identifier.toLowerCase();
-		if (procedures.containsKey(searchedIdentifier)
-				|| identifiers.contains(searchedIdentifier)) {
-			ArrayList<String> params = procedures.get(searchedIdentifier);
-			if (params.size() != procedureTypes.length - 1) {
-				System.out.println("Incorrect params lenght in procedure "
-						+ identifier);
-				return false;
-			} else {
-				for (int i = 1; i < procedureTypes.length; i++) {
-					String typeOfCalledFunction = procedureTypes[i];
-					String typeOfDefinition = params.get(i - 1);
-
-					if (!checkTypesHierarchy(typeOfCalledFunction,
-							typeOfDefinition)) {
-						System.out.println("Expected param of type "
-								+ params.get(i) + " found param type "
-								+ procedureTypes[i]);
-						return false;
-					}
-				}
-				return true;
-			}
-
-		}
-		return false;
-	}
-
-	public void checkIfThenElseExpression(String type) throws Exception {
-		if (type == null || !type.equals("boolean")) {
-			throw new Exception(
-					"IF-THEN-ELSE expression must receive a type boolean. Found: "
-							+ type + ". Error in line: " + lineError);
-		}
-	}
-
 	public void checkWhileExpression(String type) throws Exception {
 		// System.out.println("Booleano = " + type);
 		if (type == null || !type.equals("boolean")) {
 			throw new Exception(
 					"While expression must receive a type boolean. Found: "
 							+ type + ". Error in line: " + lineError);
-		}
-	}
-
-	public void checkCaseExpression(String type) throws Exception {
-		// System.out.println("Expressao = " + tipo);
-		if (type != null && (type.equals("boolean") || type.equals("nil"))) {
-			throw new Exception("CASE expression cannot receive type " + type
-					+ ". Line error: " + lineError);
-
-		}
-	}
-
-	public void checkGoToExpression(String type) throws Exception {
-		// System.out.println("Expressao = " + tipo);
-		if (!type.equals("integer")) {
-			throw new Exception(
-					"GOTO expression must receive an integer, found " + type
-							+ ". Line error: " + lineError);
 		}
 	}
 
@@ -395,51 +202,5 @@ public class SemanticManager {
 					"Boolean expression must receive a type boolean. Found: "
 							+ type + ". Error in line: " + lineError);
 		}
-	}
-
-	public void checkAssignment(String type) throws Exception {
-		// System.out.println("Atribuicao = " + tipo);
-		if (type == null || !type.equals("assignment")) {
-			throw new Exception(
-					"Assignment expression type error. Line error: "
-							+ lineError);
-		}
-	}
-
-	/* ---------- OVERLOAD methods --------- */
-	// verifica apenas se os operandos sao do mesmo tipo(no cup)
-
-	public void checkArithmetic(String operator, String type) throws Exception {
-		if (type == null || !type.equals("arithmetic")) {
-			throw new Exception(
-					"Arithmetic expression type error. Both operands must be of same type. Line error: "
-							+ lineError);
-		}
-
-	}
-
-	public void checkComparising(String operator, String type) throws Exception {
-		if (type == null) {
-			throw new Exception(
-					"Comparising expression error. Types cannot be null. Line error: "
-							+ lineError);
-		}
-
-	}
-
-	public boolean checkFunctionOverload(String identifier,
-			ArrayList<String> params) {
-		String searchedIdentifier = identifier.toLowerCase();
-		if (functions.containsKey(searchedIdentifier)
-				|| identifiers.contains(searchedIdentifier)) {
-			ArrayList<String> existingParams = funcParams
-					.get(searchedIdentifier);
-			if (existingParams.equals(params)) {
-				System.out.println("It is not possible to create function "
-						+ identifier + ": duplicated params");
-				return false;
-			}
-		}
-		return true;
 	}
 }

@@ -4,6 +4,6 @@ var x : Boolean;
 begin
   x:= 10 > 9;
 
-  while 10 > 9 do
+  while true and true do
     x:= 10;
 end.
