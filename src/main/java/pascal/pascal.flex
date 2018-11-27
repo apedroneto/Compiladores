@@ -74,8 +74,6 @@ whitespace     = {lineTerminator} | [ \t\f]
 "forward" { return symbol(sym.FORWARD, new Integer(yyline + 1)); }
 "begin" { return symbol(sym.BEGIN, new Integer(yyline + 1)); }
 "end" { return symbol(sym.END, new Integer(yyline + 1)); }
-"procedure" { return symbol(sym.PROCEDURE, new Integer(yyline + 1)); }
-"function" { return symbol(sym.FUNCTION, new Integer(yyline + 1)); }
 "packed" { return symbol(sym.PACKED, new Integer(yyline + 1)); }
 "array" { return symbol(sym.ARRAY, new Integer(yyline + 1)); }
 "of" { return symbol(sym.OF, new Integer(yyline + 1)); }

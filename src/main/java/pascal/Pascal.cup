@@ -39,8 +39,8 @@ parser code {:
 :};
 
 /*Aqui estao listado todos os simbolos terminais da nossa gramatica*/
-terminal PROGRAM, LABEL, CONST, TYPE, VAR, FORWARD, BEGIN, END, PROCEDURE,
-FUNCTION, PACKED, ARRAY, OF, EXTERNAL,  
+terminal PROGRAM, LABEL, CONST, TYPE, VAR, FORWARD, BEGIN, END,
+PACKED, ARRAY, OF, EXTERNAL,
 
 
 GOTO, WHILE, DO, REPEAT, UNTIL, TO, DOWNTO,
@@ -65,24 +65,21 @@ EQUALS, DIFF, LESSTHEN, LESSTHENEQUALS, GREATERTHEN, GREATERTHENEQUALS, IN, SCAL
 
 non terminal program, program_heading, block, statement_sequence, identifier_list, 
 declaration_part, statement_part, label_declaration_part, constant_definition_part, type_definition_part,
-variable_declaration_part, procedure_and_function_declaration_part, label, 
+variable_declaration_part, label,
 
-constant_definition, constant, type_definition, variable_declaration, variable_identifier, procedure_declaration,
-procedure_heading, procedure_body, procedure_identification, function_declaration, function_heading, 
-function_body, function_identification, directive, compiler_defined_directive, 
+constant_definition, constant, type_definition, variable_declaration, variable_identifier, directive, compiler_defined_directive,
 
-formal_parameter_list, element_list, result_type, type, identifier, identifier_closure, procedure_identifier, 
-function_identifier, type_identifier, constant_identifier, bound_identifier, field_identifier, formal_parameter_section, 
-value_parameter_section, variable_parameter_section, procedure_parameter_section, function_parameter_section, parameter_type, 
+formal_parameter_list, element_list, result_type, type, identifier, identifier_closure,
+type_identifier, constant_identifier, bound_identifier, field_identifier, formal_parameter_section,
+value_parameter_section, variable_parameter_section, function_parameter_section, parameter_type,
 
 conformant_array_schema, packed_conformant_array_schema, unpacked_conformant_array_schema,
 
 bound_specification, bound_identifier_production, bound_digit_sequence_production, ordinal_type_identifier_optional, 
 ordinal_type_identifier,  
 
-statement, simple_statement, structured_statement, assigment_statement, procedure_statement,
-goto_statement, variable, expression, expression_while, bol, true, false, expression_list, actual_variable, actual_value, actual_parameter, actual_parameter_list,
-actual_procedure, actual_function, compound_statement, repetitive_statement, conditional_statement, 
+statement, simple_statement, structured_statement, assigment_statement, goto_statement, variable, expression, expression_while, bol, true, false, expression_list, actual_variable, actual_value, actual_parameter, actual_parameter_list,
+compound_statement, repetitive_statement, conditional_statement,
 with_statement, while_statement, repeat_statement,
 
 initial_expression, simple_expression, final_expression, assignment_statement, case_statement, case_limb, case_label_list,
@@ -100,7 +97,7 @@ lower_bound, upper_bound,
 
 record_section,
 
-function_designator, field_designator, entire_variable, component_variable, referenced_variable, indexed_variable,
+field_designator, entire_variable, component_variable, referenced_variable, indexed_variable,
 array_variable, record_variable, file_variable, pointer_variable, 
 
 number, integer_number, real_number,
@@ -115,7 +112,7 @@ any_character_except_quote, actual_parameter_list_optional, relational_operator_
 label_colon, formal_parameter_list_optinonal, label_declaration_part_optional, constant_definition_part_optional, type_definition_part_optional, 
 variable_declaration_part_optional, 
 
-constant_identifier_or_number, to_or_downto, variable_or_function_identifier, type_identifier_or_conformant_array_schema, procedure_declaration_or_function_declaration, 
+constant_identifier_or_number, to_or_downto, variable_or_function_identifier, type_identifier_or_conformant_array_schema,
 
 comma_variable, comma_identifier, comma_expression, comma_output_value, comma_constant, comma_record_variable, comma_actual_parameter, comma_label, 
 
@@ -123,7 +120,7 @@ semi_colon_record_section, semi_colon_variant, semi_colon_case_limb, semi_colon_
 
 colon_index_type, multiplication_operator_factor, addition_operator_term, 
 
-procedure_declaration_or_function_declaration_semi_colon, variable_declaration_semi_colon, type_definition_semi_colon, constant_definition_semi_colon;
+variable_declaration_semi_colon, type_definition_semi_colon, constant_definition_semi_colon;
 
 
 
@@ -139,7 +136,7 @@ program_heading ::= PROGRAM identifier arguments_optional SEMICOLON;
 arguments_optional ::= LPARENT identifier_list RPARENT | ;
 
 block ::= declaration_part statement_part;
-declaration_part ::= label_declaration_part_optional constant_definition_part_optional type_definition_part_optional variable_declaration_part_optional procedure_and_function_declaration_part;
+declaration_part ::= label_declaration_part_optional constant_definition_part_optional type_definition_part_optional variable_declaration_part_optional;
 
 label_declaration_part ::= LABEL:le label:lid comma_label SEMICOLON {:  
 		if(le != null){ 
@@ -194,62 +191,29 @@ variable_declaration ::= identifier_list:il COLON type:tp
 	   	 SemanticManager.getInstance().addVariable(il.toString(), tp.toString(), "null");
 	} :};
 
-procedure_and_function_declaration_part ::= procedure_declaration_or_function_declaration_semi_colon;
-procedure_declaration_or_function_declaration_semi_colon ::= procedure_declaration_or_function_declaration SEMICOLON procedure_declaration_or_function_declaration_semi_colon | ;
 
-procedure_declaration_or_function_declaration ::= procedure_declaration | function_declaration;
-
-procedure_declaration ::= procedure_heading SEMICOLON procedure_body | procedure_heading SEMICOLON directive | procedure_identification SEMICOLON procedure_body;
-procedure_body ::= block; 
-
-function_declaration ::= function_heading SEMICOLON function_body | function_heading SEMICOLON directive | function_identification SEMICOLON function_body;
-function_body ::= block;
 directive ::= FORWARD | compiler_defined_directives;
 statement_part ::= BEGIN statement_sequence END;
 compiler_defined_directives ::= EXTERNAL; /*VERIFICAR SE ESTA CERTO*/
 
 /*------PROCEDURE AND FUNCTION DEFINITIONS------*/
 
-procedure_heading ::= PROCEDURE:p identifier:id formal_parameter_list_optinonal {: System.out.println("PROCEDURE: " + p); 
-															if(p != null){ 
-																SemanticManager.getInstance().lineError = ((int) p);
-															} if(id != null){
-																System.out.println("identifier: " + id);
-																SemanticManager.getInstance().addIdentifier(id.toString());
-																SemanticManager.getInstance().addProcedure(id.toString());
-															} :};
-															
-function_heading ::= FUNCTION:f identifier:id formal_parameter_list_optinonal:fp COLON result_type:rt {:
-		System.out.println("function heading returned type: " + fp);
-		if(f != null){ 
-			System.out.println("entrou no f !=null");
-			SemanticManager.getInstance().lineError = ((int) f);
-		} if(id != null){ 
-			System.out.println("entrou no id!=null ");
-			System.out.println("rt: " + rt);
-			SemanticManager.getInstance().addIdentifier(id.toString());
-			SemanticManager.getInstance().addFunction(id.toString(), rt.toString());
-		} :};
 
 result_type ::= type_identifier:rt {: if(rt != null){ 
 			System.out.println("result type : " + rt);		 
 			RESULT = rt; 
 			} :};
-procedure_identification ::= PROCEDURE procedure_identifier;
-function_identification ::= FUNCTION function_identifier;
 
 formal_parameter_list ::= LPARENT formal_parameter_section RPARENT;
 semi_colon_formal_parameter_section ::= SEMICOLON formal_parameter_section semi_colon_formal_parameter_section | ;
 
 formal_parameter_list_optinonal ::= formal_parameter_list | ;
-formal_parameter_section ::= value_parameter_section | variable_parameter_section | procedure_parameter_section | function_parameter_section;
+formal_parameter_section ::= value_parameter_section | variable_parameter_section ;
 
 value_parameter_section ::= identifier_list COLON parameter_type;
 variable_parameter_section ::= VAR identifier_list COLON parameter_type;
 
-procedure_parameter_section ::= procedure_heading;
-function_parameter_section ::= function_heading;
-parameter_type ::= type_identifier:ti {: if(ti != null){ 
+parameter_type ::= type_identifier:ti {: if(ti != null){
 		System.out.println("type identifier: " + ti);		 
 		RESULT = ti; 
 	} :} | conformant_array_schema;
@@ -291,12 +255,11 @@ statement ::= simple_statement | structured_statement;
 label_colon ::= label COLON | ;
 
 simple_statement ::= simple_statement_optional | ;
-simple_statement_optional ::= assignment_statement | procedure_statement | goto_statement;
+simple_statement_optional ::= assignment_statement | goto_statement;
 
 assignment_statement ::= variable_or_function_identifier ASSIGMENT expression;
-variable_or_function_identifier ::= variable | function_identifier;
+variable_or_function_identifier ::= variable ;
 
-procedure_statement ::= procedure_identifier actual_parameter_list_optional;
 goto_statement ::= GOTO label;
 structured_statement ::= compound_statement | repetitive_statement | conditional_statement | with_statement;
 compound_statement ::= BEGIN statement_sequence END;
@@ -332,10 +295,8 @@ comma_record_variable ::= COMMA record_variable comma_record_variable | ;
 actual_parameter_list ::= LPARENT actual_parameter comma_actual_parameter RPARENT;
 comma_actual_parameter ::= COMMA actual_parameter comma_actual_parameter | ;
 
-actual_parameter ::= actual_value | actual_variable | actual_procedure | actual_function;
+actual_parameter ::= actual_value | actual_variable;
 actual_value ::= expression;
-actual_procedure ::= procedure_identifier;
-actual_function ::= function_identifier;
 
 /*------EXPRESSIONS-------*/
 
@@ -370,7 +331,7 @@ addition_operator_term ::= addition_operator term addition_operator_term | ;
 term ::= factor multiplication_operator_factor;
 multiplication_operator_factor ::= multiplication_operator factor multiplication_operator_factor | ;
 
-factor ::= variable:vari {: if(vari != null) { RESULT = vari;} :} | number:n {: System.out.println("numero"+n); if(n != null) { RESULT = n;} :} | string:str {: if(str != null) { RESULT = "string"; } :} | set | NIL {: RESULT = "nil"; :} | constant_identifier | bound_identifier | function_designator | LPARENT expression:exp RPARENT {: if(exp != null) { RESULT = exp; } :} | NOT:not {: RESULT = new Objeto("not", "boolean", "not" , (int) not); :} factor;
+factor ::= variable:vari {: if(vari != null) { RESULT = vari;} :} | number:n {: System.out.println("numero"+n); if(n != null) { RESULT = n;} :} | string:str {: if(str != null) { RESULT = "string"; } :} | set | NIL {: RESULT = "nil"; :} | constant_identifier | bound_identifier | LPARENT expression:exp RPARENT {: if(exp != null) { RESULT = exp; } :} | NOT:not {: RESULT = new Objeto("not", "boolean", "not" , (int) not); :} factor;
 variable ::= entire_variable:ev {: if(ev != null) {System.out.println("entire variable: " + ev); RESULT = ev;} :}  | component_variable:cv {: if(cv != null) {System.out.println("component variable : " + cv); RESULT = cv;} :} | referenced_variable:rv {: if(rv != null) {System.out.println("referenced variable: " + rv); RESULT = rv;} :};
 entire_variable ::= variable_identifier:vi {: if(vi != null) {RESULT = vi;} :} | field_identifier:fi {: if(fi != null) {RESULT = fi;}:};
 component_variable ::= indexed_variable:iv {: if(iv != null) {RESULT = iv;} :} | field_designator:fd {: if(fd != null) {RESULT = fd;}:} | file_buffer:fb {: if(fb != null) {RESULT = fb;} :};
@@ -380,7 +341,6 @@ field_designator ::= record_variable DOT field_identifier;
 
 set ::= LBRACKET element_list RBRACKET;
 element_list ::= expression comma_expression | ;
-function_designator ::= function_identifier actual_parameter_list_optional;
 actual_parameter_list_optional ::= actual_parameter_list | ;
 
 file_buffer ::= file_variable CIRCUNFLEX;
@@ -456,8 +416,6 @@ variable_identifier ::= identifier:id {: System.out.println("variable identifier
 type_identifier ::= identifier:id {: System.out.println("type variable: " + id); if(id != null) {RESULT = new Objeto(id.toString(), id.toString(), id , 0);} :};
 
 
-procedure_identifier ::= identifier:id {: System.out.println("procedure variable: " + id); if(id != null) {RESULT = new Objeto(id.toString(), id.toString(), id , -1);} :};
-function_identifier ::= identifier:id {: System.out.println("function variable: " + id); if(id != null) {RESULT = new Objeto(id.toString(), id.toString(), id , -1);} :};
 bound_identifier ::= identifier:id {: System.out.println("bound variable: " + id); if(id != null) {RESULT = new Objeto(id.toString(), id.toString(), id , -1);} :};
 
 /*------LOW LEVEL DEFINITIONS------*/
