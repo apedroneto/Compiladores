@@ -43,7 +43,7 @@ terminal PROGRAM, LABEL, CONST, TYPE, VAR, FORWARD, BEGIN, END,
 PACKED, ARRAY, OF, EXTERNAL,
 
 
-GOTO, WHILE, DO, REPEAT, UNTIL, TO, DOWNTO,
+WHILE, DO, REPEAT, UNTIL, TO, DOWNTO,
 
 THEN, CASE, WITH,
 
@@ -78,7 +78,7 @@ conformant_array_schema, packed_conformant_array_schema, unpacked_conformant_arr
 bound_specification, bound_identifier_production, bound_digit_sequence_production, ordinal_type_identifier_optional, 
 ordinal_type_identifier,  
 
-statement, simple_statement, structured_statement, assigment_statement, goto_statement, variable, expression, expression_while, bol, true, false, expression_list, actual_variable, actual_value, actual_parameter, actual_parameter_list,
+statement, simple_statement, structured_statement, assigment_statement, variable, expression, expression_while, bol, true, false, expression_list, actual_variable, actual_value, actual_parameter, actual_parameter_list,
 compound_statement, repetitive_statement, conditional_statement,
 with_statement, while_statement, repeat_statement,
 
@@ -255,12 +255,11 @@ statement ::= simple_statement | structured_statement;
 label_colon ::= label COLON | ;
 
 simple_statement ::= simple_statement_optional | ;
-simple_statement_optional ::= assignment_statement | goto_statement;
+simple_statement_optional ::= assignment_statement;
 
 assignment_statement ::= variable_or_function_identifier ASSIGMENT expression;
 variable_or_function_identifier ::= variable ;
 
-goto_statement ::= GOTO label;
 structured_statement ::= compound_statement | repetitive_statement | conditional_statement | with_statement;
 compound_statement ::= BEGIN statement_sequence END;
 repetitive_statement ::= while_statement | repeat_statement ;

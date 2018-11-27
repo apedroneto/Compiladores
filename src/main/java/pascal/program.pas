@@ -2,6 +2,6 @@ program test;
 var x : Boolean;
 begin
   x:= 10 > 9;
-  while true do
+  while 10 > 9 do
     x:= 10;
 end.

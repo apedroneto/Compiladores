@@ -2,7 +2,7 @@ import java_cup.runtime.*;
 
 %%
 
-%class LexicalAnalysisCalculator
+%class generator.LexicalAnalysisCalculator
 %column
 %line
 %cup
@@ -75,9 +75,7 @@ whitespace     = {lineTerminator} | [ \t\f]
 "begin" { return symbol(sym.BEGIN, new Integer(yyline + 1)); }
 "end" { return symbol(sym.END, new Integer(yyline + 1)); }
 "packed" { return symbol(sym.PACKED, new Integer(yyline + 1)); }
-"array" { return symbol(sym.ARRAY, new Integer(yyline + 1)); }
 "of" { return symbol(sym.OF, new Integer(yyline + 1)); }
-"goto" { return symbol(sym.GOTO, new Integer(yyline + 1)); }
 "while" { return symbol(sym.WHILE, new Integer(yyline + 1)); }
 "do" { return symbol(sym.DO, new Integer(yyline + 1)); }
 "repeat" { return symbol(sym.REPEAT, new Integer(yyline + 1)); }
