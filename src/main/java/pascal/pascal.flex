@@ -2,7 +2,7 @@ import java_cup.runtime.*;
 
 %%
 
-%class generator.LexicalAnalysisCalculator
+%class LexicalAnalysisCalculator
 %column
 %line
 %cup
