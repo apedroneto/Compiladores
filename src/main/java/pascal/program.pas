@@ -3,7 +3,6 @@ var x : Boolean;
 type
 	TMember = record
 		firstname, surname : string;
-		phone: string;
 		paidCurrentSubscription: boolean
 	end;
 begin
