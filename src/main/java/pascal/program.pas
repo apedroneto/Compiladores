@@ -1,8 +1,13 @@
 program test;
 var x : Boolean;
-
+type
+	TMember = record
+		firstname, surname : string;
+		phone: string;
+		paidCurrentSubscription: boolean
+	end;
 begin
-  x:= 10 > 9;
+  x:= 10;
 
   while true and true do
     x:= 10;

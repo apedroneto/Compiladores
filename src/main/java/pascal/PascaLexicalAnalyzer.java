@@ -3,7 +3,7 @@ package pascal;
 import java.io.FileReader;
 import java.io.IOException;
 
-import main.java.generator.*;
+import generator.*;
 import utils.SemanticManager;
 
 
