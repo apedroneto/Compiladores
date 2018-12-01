@@ -8,7 +8,7 @@ public class GeneratorPascal {
 
     public static void main(String[] args) {
 
-        String file = "/home/lucas/Documents/Compiladores/src/main/java/pascal/pascal.flex";
+        String file = "/home/lucas/Compiladores/src/main/java/pascal/pascal.flex";
 
         File sourceCode = new File(file);
 
