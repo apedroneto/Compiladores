@@ -12,7 +12,7 @@ public class PascaLexicalAnalyzer {
 
     public static void main(String[] args) throws IOException {
 
-        String sourceCode = "/home/lucas/Compiladores/src/main/java/pascal/program.pas";
+        String sourceCode = "/home/lucas/Documents/Compiladores/src/main/java/pascal/program.pas";
 
         try{
             LexicalAnalysisCalculator scanner = new LexicalAnalysisCalculator(new FileReader(sourceCode));
