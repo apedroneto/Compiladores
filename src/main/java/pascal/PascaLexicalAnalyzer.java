@@ -3,7 +3,7 @@ package pascal;
 import java.io.FileReader;
 import java.io.IOException;
 
-import generator.*;
+import main.java.generator.*;
 import utils.SemanticManager;
 
 
@@ -12,7 +12,7 @@ public class PascaLexicalAnalyzer {
 
     public static void main(String[] args) throws IOException {
 
-        String sourceCode = "/home/antonio/horaDoShow/Compiladores/src/main/java/pascal/program.pas";
+        String sourceCode = "/home/lucas/Documents/Compiladores/src/main/java/pascal/program.pas";
 
         try{
             LexicalAnalysisCalculator scanner = new LexicalAnalysisCalculator(new FileReader(sourceCode));
