@@ -3,11 +3,10 @@ var x : Boolean;
 type
 	TMember = record
 		firstname, surname : string;
-		paidCurrentSubscription: boolean
+		id : integer
 	end;
 begin
-  x:= 10;
-
-  while true and true do
+  x:= true and true;
+  while true do
     x:= 10;
 end.

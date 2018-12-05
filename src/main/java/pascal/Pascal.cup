@@ -82,7 +82,7 @@ with_statement, while_statement, repeat_statement,
 
 initial_expression, simple_expression, final_expression, assignment_statement, case_statement, case_limb, case_label_list,
 
-relational_operator, addition_operator, multiplication_operator,   
+relational_operator, addition_operator, multiplication_operator,
 
 set, simple_type, structured_type, pointer_type, subrange_type, enumerated_type, unpacked_structured_type, record_type, set_type, file_type, index_type, element_type, base_type, file_component_type,
 
@@ -107,7 +107,7 @@ sign, sign_optional, term, factor, char, letter, fraction_length, file_buffer, s
 semi_colon_field_width, identifier_colon, packed_optional, semi_colon_optional, semi_colon_variant_part, compiler_defined_directives,  
 any_character_except_quote, actual_parameter_list_optional, relational_operator_simple_expression, simple_statement_optional,
 label_colon, formal_parameter_list_optinonal, label_declaration_part_optional, constant_definition_part_optional, type_definition_part_optional, 
-variable_declaration_part_optional, boolean_operator,
+variable_declaration_part_optional, boolean_operator, boolean_expression,
 
 constant_identifier_or_number, to_or_downto, variable_or_function_identifier,
 
@@ -256,8 +256,6 @@ while_statement ::= WHILE:w expression_while:expw DO statement {: System.out.pri
 															} if(expw != null){ 
 																SemanticManager.getInstance().checkWhileExpression(expw.toString());
 															} :};
-repeat_statement ::= REPEAT statement_sequence UNTIL expression;
-to_or_downto ::= TO | DOWNTO;
 
 initial_expression ::= expression;
 final_expression ::= expression;
@@ -275,24 +273,18 @@ actual_value ::= expression;
 
 /*------EXPRESSIONS-------*/
 
-expression_while ::= factor:fac1 relational_operator factor:fac2{:
+expression_while ::= TRUE:var1{:RESULT = "boolean";:} | FALSE:var2{:RESULT = "boolean";:} | expression:exp {: RESULT = exp; :};
 
-    if((fac1 == "integer" || fac1 == "real") && (fac2 == "integer" || fac2 == "real")){
-        RESULT = "boolean";
-    } else {
-        RESULT = "error";
-    }
-
-:} | TRUE:var1{:RESULT = "boolean";:} | FALSE:var2{:RESULT = "boolean";:} | bol:bol1 boolean_operator bol:bol2 {: RESULT = "boolean";:};
+boolean_expression ::= bol:bol1 boolean_operator bol:bol2 {: RESULT = "boolean";:};
 
 boolean_operator ::=  AND:and {: RESULT = new Objeto("and", "boolean", "and" , (int) and); :} | OR:or {: RESULT = new Objeto("or", "boolean", "or" , (int) or); :};
 
-expression ::= simple_expression:sexp relational_operator_simple_expression:relopse
-{: System.out.println("exps= "+ sexp + "relopse="+relopse);
- 	if(sexp != null){
-		RESULT = sexp;
-		
-	} :};
+expression ::= boolean_expression:bexp
+{: System.out.println("bexp= "+ bexp);
+ 	if(bexp != null){
+		RESULT = bexp;
+
+	} :} | true:var1{:RESULT = "boolean";:} | false:var2{:RESULT = "boolean";:} | simple_expression:sexp {: System.out.println("sexp= " + sexp); RESULT = "integer"; :};
 										
 relational_operator_simple_expression ::= relational_operator:relop simple_expression:sexp {: System.out.println("RELOP: " + ((Objeto) relop).getId()); 
 															if(relop != null){ 
@@ -340,11 +332,6 @@ colon_index_type ::= COLON index_type colon_index_type | ;
 index_type ::= simple_type;
 element_type ::= type;
 record_type ::= RECORD field_list END;
-set_type ::= SET OF base_type;
-base_type ::= type;
-file_type ::= FILE OF file_component_type;
-file_component_type ::= type;
-pointer_type ::= CIRCUNFLEX type_identifier;
 
 /*--------RECORD FIELDS---------*/
 field_list ::= field_list_aux semi_colon_optional | ;
