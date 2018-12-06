@@ -43,7 +43,7 @@ terminal PROGRAM, LABEL, CONST, TYPE, VAR, FORWARD, BEGIN, END,
 PACKED, OF, EXTERNAL,
 
 
-WHILE, DO, REPEAT, UNTIL, TO, DOWNTO,
+WHILE, DO, TO,
 
 THEN, CASE, WITH,
 
@@ -78,7 +78,7 @@ ordinal_type_identifier,
 
 statement, simple_statement, structured_statement, assigment_statement, variable, expression, expression_while, bol, true, false, expression_list, actual_variable, actual_value, actual_parameter, actual_parameter_list,
 compound_statement, repetitive_statement, conditional_statement,
-with_statement, while_statement, repeat_statement,
+with_statement, while_statement,
 
 initial_expression, simple_expression, final_expression, assignment_statement, case_statement, case_limb, case_label_list,
 
@@ -109,7 +109,7 @@ any_character_except_quote, actual_parameter_list_optional, relational_operator_
 label_colon, formal_parameter_list_optinonal, label_declaration_part_optional, constant_definition_part_optional, type_definition_part_optional, 
 variable_declaration_part_optional, boolean_operator, boolean_expression,
 
-constant_identifier_or_number, to_or_downto, variable_or_function_identifier,
+constant_identifier_or_number, variable_or_function_identifier,
 
 comma_variable, comma_identifier, comma_expression, comma_output_value, comma_constant, comma_record_variable, comma_actual_parameter, comma_label, 
 
