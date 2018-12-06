@@ -173,7 +173,16 @@ variable_declaration_part ::= VAR:va variable_declaration:var SEMICOLON variable
 		//*************************
 		System.out.println("VARIABLE DECLARATION PART: " + var);		 
 			RESULT = var; 
-		} :};
+		} :} | VAR:va variable_declaration:var SEMICOLON variable_declaration_semi_colon
+               		{: if(va != null){
+               			SemanticManager.getInstance().lineError = ((int) va);
+               		} if(var != null) {
+               		//*************************
+               		//*************************
+               		//*************************
+               		System.out.println("VARIABLE DECLARATION PART: " + var);
+               			RESULT = var;
+               		} :} declaration_part;
 		
 		
 variable_declaration_semi_colon ::= variable_declaration SEMICOLON variable_declaration_semi_colon | ; 
